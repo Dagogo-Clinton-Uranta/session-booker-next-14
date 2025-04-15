@@ -9,33 +9,6 @@ export async function getCalendarEventTimes(
 ) {
   const oAuthClient = await getOAuthClient(clerkUserId)
 
-
-
-  async function getOAuthClient(clerkUserId: string) {
-    console.log("OUR CLERK USER ID IS --->",clerkClient.users)
-    const token = await clerkClient().users.getUserOauthAccessToken(
-      clerkUserId,
-      "oauth_google"
-    )
-  
-    if (token.data.length === 0 || token.data[0].token == null) {
-      return
-    }
-  
-    const client = new google.auth.OAuth2(
-      process.env.GOOGLE_OAUTH_CLIENT_ID,
-      process.env.GOOGLE_OAUTH_CLIENT_SECRET,
-      process.env.GOOGLE_OAUTH_REDIRECT_URL
-    )
-  
-    client.setCredentials({ access_token: token.data[0].token })
-  
-    return client
-  }
-
-  
-
-
   const events = await google.calendar("v3").events.list({
     calendarId: "primary",
     eventTypes: ["default"],
@@ -66,6 +39,33 @@ export async function getCalendarEventTimes(
       .filter(date => date != null) || []
   )
 }
+
+
+
+async function getOAuthClient(clerkUserId: string) {
+  console.log("OUR CLERK USER ID IS --->",clerkClient.users)
+  const token = await clerkClient().users.getUserOauthAccessToken(
+    clerkUserId,
+    "oauth_google"
+  )
+
+  if (token.data.length === 0 || token.data[0].token == null) {
+    return
+  }
+
+  const client = new google.auth.OAuth2(
+    process.env.GOOGLE_OAUTH_CLIENT_ID,
+    process.env.GOOGLE_OAUTH_CLIENT_SECRET,
+    process.env.GOOGLE_OAUTH_REDIRECT_URL
+  )
+
+  client.setCredentials({ access_token: token.data[0].token })
+
+  return client
+}
+
+
+
 
 export async function createCalendarEvent({
   clerkUserId,
