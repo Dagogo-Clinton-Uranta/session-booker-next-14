@@ -29,7 +29,7 @@ export default function PrivacyPolicyPage() {
         </CardHeader>
         <CardContent className="space-y-6 text-sm text-gray-700">
           <p>
-            This Privacy Policy outlines how we collect, use, and safeguard your information when you use our calendar booking application ("Service").
+            This Privacy Policy outlines how we collect, use, and safeguard your information when you use our calendar booking application.
           </p>
 
           <h2 className="font-semibold text-base">1. Information We Collect</h2>

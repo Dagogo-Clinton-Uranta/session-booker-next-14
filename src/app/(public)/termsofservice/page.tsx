@@ -24,12 +24,12 @@ export default function TermsOfServicePage() {
         <CardHeader>
           <CardTitle>Terms of Service</CardTitle>
           <CardDescription>
-            Please read these terms of service ("Terms") carefully before using our calendar booking application.
+            Please read these terms of service  carefully before using our calendar booking application.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6 text-sm text-gray-700">
           <p>
-            By accessing or using our calendar booking application (the "Service"), you agree to be bound by these Terms. If you do not agree to these Terms, do not use the Service.
+            By accessing or using our calendar booking application, you agree to be bound by these Terms. If you do not agree to these Terms, do not use the Service.
           </p>
 
           <h2 className="font-semibold text-base">1. Description of Service</h2>
