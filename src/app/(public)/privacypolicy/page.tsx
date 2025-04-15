@@ -49,7 +49,7 @@ export default function PrivacyPolicyPage() {
 
           <h2 className="font-semibold text-base">3. Google Calendar API Use</h2>
           <p>
-            Our use of Google user data adheres to Google's API Services User Data Policy, including the Limited Use requirements. Calendar data is used only within the app for its intended functionality and is never shared with third parties.
+            Our use of Google user data adheres to the API Services User Data Policy provided by Google, including the Limited Use requirements. Calendar data is used only within the app for its intended functionality and is never shared with third parties.
           </p>
 
           <h2 className="font-semibold text-base">4. Data Retention</h2>
