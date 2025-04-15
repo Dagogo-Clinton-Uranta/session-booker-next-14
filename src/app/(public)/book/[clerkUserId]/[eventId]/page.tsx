@@ -27,10 +27,16 @@ export default async function BookEventPage({
 }: {
   params: { clerkUserId: string; eventId: string }
 }) {
+
+
+
   const event = await db.query.EventTable.findFirst({
     where: ({ clerkUserId: userIdCol, isActive, id }, { eq, and }) =>
       and(eq(isActive, true), eq(userIdCol, clerkUserId), eq(id, eventId)),
   })
+
+  console.log("USER ID COL IS -->",eventId)
+
 
   if (event == null) return notFound()
 

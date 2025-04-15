@@ -20,6 +20,8 @@ export const revalidate = 0
 export default async function EventsPage() {
   const { userId, redirectToSignIn } = auth()
 
+  console.log("WE ARE AUTHENTICATED-->",auth())
+
   if (userId == null) return redirectToSignIn()
 
   const events = await db.query.EventTable.findMany({

@@ -1,4 +1,4 @@
-import "use-server"
+import "server-only"
 import { clerkClient } from "@clerk/nextjs/server"
 import { google } from "googleapis"
 import { addMinutes, endOfDay, startOfDay } from "date-fns"
@@ -8,6 +8,33 @@ export async function getCalendarEventTimes(
   { start, end }: { start: Date; end: Date }
 ) {
   const oAuthClient = await getOAuthClient(clerkUserId)
+
+
+
+  async function getOAuthClient(clerkUserId: string) {
+    console.log("OUR CLERK USER ID IS --->",clerkClient.users)
+    const token = await clerkClient().users.getUserOauthAccessToken(
+      clerkUserId,
+      "oauth_google"
+    )
+  
+    if (token.data.length === 0 || token.data[0].token == null) {
+      return
+    }
+  
+    const client = new google.auth.OAuth2(
+      process.env.GOOGLE_OAUTH_CLIENT_ID,
+      process.env.GOOGLE_OAUTH_CLIENT_SECRET,
+      process.env.GOOGLE_OAUTH_REDIRECT_URL
+    )
+  
+    client.setCredentials({ access_token: token.data[0].token })
+  
+    return client
+  }
+
+  
+
 
   const events = await google.calendar("v3").events.list({
     calendarId: "primary",
@@ -58,10 +85,13 @@ export async function createCalendarEvent({
   eventName: string
 }) {
   const oAuthClient = await getOAuthClient(clerkUserId)
+
   const calendarUser = await clerkClient().users.getUser(clerkUserId)
   if (calendarUser.primaryEmailAddress == null) {
     throw new Error("Clerk user has no email")
   }
+
+
 
   const calendarEvent = await google.calendar("v3").events.insert({
     calendarId: "primary",
@@ -90,23 +120,3 @@ export async function createCalendarEvent({
   return calendarEvent.data
 }
 
-async function getOAuthClient(clerkUserId: string) {
-  const token = await clerkClient().users.getUserOauthAccessToken(
-    clerkUserId,
-    "oauth_google"
-  )
-
-  if (token.data.length === 0 || token.data[0].token == null) {
-    return
-  }
-
-  const client = new google.auth.OAuth2(
-    process.env.GOOGLE_OAUTH_CLIENT_ID,
-    process.env.GOOGLE_OAUTH_CLIENT_SECRET,
-    process.env.GOOGLE_OAUTH_REDIRECT_URL
-  )
-
-  client.setCredentials({ access_token: token.data[0].token })
-
-  return client
-}
