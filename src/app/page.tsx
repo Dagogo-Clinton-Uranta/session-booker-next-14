@@ -61,7 +61,7 @@ export default function HomePage() {
     <div className="text-center container my-10 mx-auto max-w-4xl px-4">
       {/* Hero Section */}
       <section className="mb-10">
-        <h1 className="text-4xl font-bold mb-4">Welcome to ECO IT SOLUTIONS</h1>
+        <h1 className="text-4xl font-bold mb-4">Welcome to session-booker</h1>
         <p className="text-lg text-gray-600 mb-6">
           Your gateway to industry-recognized IT certifications.
         </p>
