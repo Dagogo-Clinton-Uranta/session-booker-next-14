@@ -35,6 +35,7 @@ import { Button } from "@/components/ui/button"
 import { SignInButton, SignUpButton, UserButton } from "@clerk/nextjs"
 import { auth } from "@clerk/nextjs/server"
 import { redirect } from "next/navigation"
+import Link from 'next/link'
 
 export default function HomePage() {
   const { userId } = auth()
@@ -64,6 +65,22 @@ export default function HomePage() {
         <p className="text-lg text-gray-600 mb-6">
           Your gateway to industry-recognized IT certifications.
         </p>
+
+        <p className="text-lg text-gray-600 mb-6">
+          This is a demo app owned by dagogouranta@gmail.com.
+          The app is being made on behalf of ECO IT solutions,
+          
+          which offers tutoring on various Information Technology related topics.
+          <br/>
+          When a user wants a one on one tutorial, they come to the app and look for free timeslots
+          of the instructors and then book a timeslot. 
+          <br/>
+          This meeting should then be reflected on the google calendars of all attendees of the meeting.
+           Google calender permission is needed to make this happen.
+
+        </p>
+
+
         <div className="flex gap-2 justify-center mb-6">
           <Button asChild>
             <SignInButton />
@@ -137,6 +154,18 @@ export default function HomePage() {
     ))}
   </div>
 </section>
+
+
+<div className="flex gap-2 justify-center mb-6">
+         <Button asChild>
+          <Link href={`/privacypolicy`}>Privacy Policy</Link>
+          </Button>
+
+          <Button asChild>
+          <Link href={`/termsofservice`}>Terms of Service</Link>
+        </Button>
+          
+        </div>
      
     </div>
   )
@@ -144,36 +173,3 @@ export default function HomePage() {
 
 
 
-
-
-
-/**old carousel section */
-//<section className="my-16">
-//<h2 className="text-2xl font-semibold mb-6">Why Choose ECO IT SOLUTIONS?</h2>
-//<div /*ref={sliderRef}*/ className="keen-slider rounded-xl overflow-hidden">
-//{features.map((feature, index) => {
-//const backgroundImages = [
-//"https://images.unsplash.com/photo-1571260899304-425eee4c7efc", // classroom 1
-//"https://images.unsplash.com/photo-1573497491208-6b1acb260507", // student on laptop
-//"https://images.unsplash.com/photo-1558021212-51b6ecfa0db9",    // teacher with board
-//"https://images.unsplash.com/photo-1600195077078-3abbc7b1e5f4", // IT training
-//"https://images.unsplash.com/photo-1596496053861-52f33bbaafc6"  // group training
-//]
-//const bgImage = backgroundImages[index % backgroundImages.length]
-//return (
-//<div
-//  key={index}
-//  className="keen-slider__slide relative flex items-center justify-center text-white text-xl font-semibold px-4"
-//  style={{
-//    minHeight: "30vh",
-//    backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${bgImage})`,
-//    backgroundSize: "cover",
-//    backgroundPosition: "center",
-//  }}
-//>
-//  {feature}
-//</div>
-//)
-//})}
-//</div>
-//</section>
