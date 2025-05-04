@@ -66,20 +66,6 @@ export default function HomePage() {
           Your gateway to industry-recognized IT certifications.
         </p>
 
-        <p className="text-lg text-gray-600 mb-6">
-          This is a demo app owned by dagogouranta@gmail.com.
-          The app is being made on behalf of ECO IT solutions,
-          
-          which offers tutoring on various Information Technology related topics.
-          <br/>
-          When a user wants a one on one tutorial, they come to the app and look for free timeslots
-          of the instructors and then book a timeslot. 
-          <br/>
-          This meeting should then be reflected on the google calendars of all attendees of the meeting.
-           Google calender permission is needed to make this happen.
-
-        </p>
-
 
         <div className="flex gap-2 justify-center mb-6">
           <Button asChild>
