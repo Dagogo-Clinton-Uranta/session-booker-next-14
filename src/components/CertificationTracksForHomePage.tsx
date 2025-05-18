@@ -55,7 +55,7 @@ export default function CertificationTracksForHomePage() {
  
   return (
     <section className="my-12">
-       <h2 className="text-blue-600 text-2xl font-semibold mb-4">Our Certification Tracks</h2>
+       <h2 className=" text-2xl font-semibold mb-4">Our Certification Tracks</h2>
 
       <ul className="flex flex-col gap-4 text-left text-gray-700 max-w-[800px] mx-auto">
         {items.map((item, i) => (

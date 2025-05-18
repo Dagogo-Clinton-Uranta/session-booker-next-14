@@ -17,39 +17,7 @@ import { FaMoneyBillWave } from "react-icons/fa6";
 import { FaCalendarAlt } from "react-icons/fa";
 
 
-const items = [
-   
-     "Hands-on Labs with Real Equipment",
-   
-   
-      "Certified Instructors with Industry Experience",
-   
-     "Job Placement Assistance",
-     "Flexible Weekend and Evening Classes",
-  "Hybrid Learning – In-person & Online",
-  "Flexible Paymeny Plans (Agreed Installments)",
-    
-  ]
 
-const itemImages =
-[
-    healthcare,
-    vmware,
-    mcse,
-    network,
-    redhat
-]
-
-
-const emojis =[
-  <HiBeaker style={{fontSize:"3.5rem"}} />,
-  <AiFillSafetyCertificate  style={{fontSize:"3.5rem"}}/>,
-  <FaHandsHelping style={{fontSize:"3.5rem"}} />,
-  <FaCalendarAlt style={{fontSize:"3.5rem"}} />,
-  <FaChalkboardUser  style={{fontSize:"3.5rem"}}/>,
-  <FaMoneyBillWave style={{fontSize:"3.5rem"}} />
-  
-]
 
 export default function WhyChooseForHomePage() {
 //  const trail = useTrail(items.length, {
@@ -59,12 +27,36 @@ export default function WhyChooseForHomePage() {
 //    delay: 800,
 //  });
 
+const items = [
+   
+  "Hands-on Labs with Real Equipment",
 
+
+   "Certified Instructors with Industry Experience",
+
+  "Job Placement Assistance",
+  "Flexible Weekend and Evening Classes",
+"Hybrid Learning – In-person & Online",
+"Flexible Payment Plans (Agreed Installments)",
+ 
+]
+
+
+
+//const emojis =[
+//<HiBeaker style={{fontSize:"3.5rem"}} />,
+//<AiFillSafetyCertificate  style={{fontSize:"3.5rem"}}/>,
+//<FaHandsHelping style={{fontSize:"3.5rem"}} />,
+//<FaCalendarAlt style={{fontSize:"3.5rem"}} />,
+//<FaChalkboardUser  style={{fontSize:"3.5rem"}}/>,
+//<FaMoneyBillWave style={{fontSize:"3.5rem"}} />
+//
+//]
     
  
   return (
     <section className="my-12">
-  <h2 className="text-blue-600 text-2xl font-semibold mb-4">
+  <h2 className="text-2xl font-semibold mb-4">
     Why Choose Us
   </h2>
 
@@ -83,7 +75,16 @@ export default function WhyChooseForHomePage() {
             className="mb-2"
     />*/}
 
-       <span>{emojis[i]}</span>
+       <span>{
+       item === "Hands-on Labs with Real Equipment"? <HiBeaker style={{fontSize:"3.5rem"}} />:
+      item === "Certified Instructors with Industry Experience"? <AiFillSafetyCertificate  style={{fontSize:"3.5rem"}}/>:
+       item === "Job Placement Assistance"?  <FaHandsHelping style={{fontSize:"3.5rem"}} />:
+       item === "Flexible Weekend and Evening Classes"?<FaCalendarAlt style={{fontSize:"3.5rem"}} />:
+       item === "Hybrid Learning – In-person & Online"?  <FaChalkboardUser  style={{fontSize:"3.5rem"}}/>:
+      
+       <FaMoneyBillWave style={{fontSize:"3.5rem"}} />
+       
+       }</span>
 
           <span style={{width:"70%"}}>{item}</span>
         </div>
