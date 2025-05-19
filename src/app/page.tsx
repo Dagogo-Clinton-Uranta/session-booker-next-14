@@ -140,7 +140,7 @@ export default function HomePage() {
       </div>
     </section>
 
-{/* WHY CHOOSE US Section */}
+{/* WHY CHOOSE Section */}
     <WhyChooseForHomePage/>
 
  {/* Courses / Features Section */}
@@ -196,7 +196,7 @@ export default function HomePage() {
     ))}
   </div>
 </section>*/}
- <h2 className="text-blue-600 text-2xl font-semibold mb-6 text-center">What Our Clients Say</h2>
+ <h2 className=" text-2xl font-semibold mb-6 text-center">What Our Clients Say</h2>
 <CarouselComponent/>
 
 
