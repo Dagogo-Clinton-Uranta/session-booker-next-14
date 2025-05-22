@@ -93,11 +93,55 @@ export async function createCalendarEvent({
 
 
 
+  //const calendarEvent = await google.calendar("v3").events.insert({
+  //  calendarId: "primary",
+  //  auth: oAuthClient,
+  //  sendUpdates: "all",
+  //  requestBody: {
+  //    attendees: [
+  //      { email: guestEmail, displayName: guestName },
+  //      {
+  //        email: calendarUser.primaryEmailAddress.emailAddress,
+  //        displayName: calendarUser.fullName,
+  //        responseStatus: "accepted",
+  //      },
+  //    ],
+  //    conferenceData: {
+  //      createRequest: {
+  //        requestId: `${Date.now()}-${Math.random().toString(36).substr(2, 5)}`, // unique ID for each request
+  //        conferenceSolutionKey: {
+  //          type: "hangoutsMeet", // required for Google Meet
+  //        },
+  //      }
+  //    }
+  //      ,
+  //    description: guestNotes ? `Additional Details: ${guestNotes}` : undefined,
+  //    start: {
+  //      dateTime: startTime.toISOString(),
+  //    },
+  //    end: {
+  //      dateTime: addMinutes(startTime, durationInMinutes).toISOString(),
+  //    },
+  //    summary: `${guestName} + ${calendarUser.fullName}: ${eventName}`,
+  //  },
+  //})
+
+
+
   const calendarEvent = await google.calendar("v3").events.insert({
     calendarId: "primary",
     auth: oAuthClient,
     sendUpdates: "all",
+    conferenceDataVersion: 1, // required to enable Google Meet
     requestBody: {
+      summary: `${guestName} + ${calendarUser.fullName}: ${eventName}`,
+      description: guestNotes ? `Additional Details: ${guestNotes}` : undefined,
+      start: {
+        dateTime: startTime.toISOString(),
+      },
+      end: {
+        dateTime: addMinutes(startTime, durationInMinutes).toISOString(),
+      },
       attendees: [
         { email: guestEmail, displayName: guestName },
         {
@@ -106,16 +150,16 @@ export async function createCalendarEvent({
           responseStatus: "accepted",
         },
       ],
-      description: guestNotes ? `Additional Details: ${guestNotes}` : undefined,
-      start: {
-        dateTime: startTime.toISOString(),
+      conferenceData: {
+        createRequest: {
+          requestId: `${Date.now()}-${Math.random().toString(36).substr(2, 5)}`, // unique ID for each request
+          conferenceSolutionKey: {
+            type: "hangoutsMeet", // required for Google Meet
+          },
+        },
       },
-      end: {
-        dateTime: addMinutes(startTime, durationInMinutes).toISOString(),
-      },
-      summary: `${guestName} + ${calendarUser.fullName}: ${eventName}`,
     },
-  })
+  });
 
   return calendarEvent.data
 }
